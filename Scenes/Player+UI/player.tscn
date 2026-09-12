@@ -101,6 +101,7 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [node name="Player" type="CharacterBody2D" unique_id=2021568226]
+texture_filter = 1
 material = ExtResource("1_g0rqn")
 collision_layer = 2
 collision_mask = 13
@@ -109,6 +110,7 @@ script = ExtResource("1_vr4g2")
 [node name="PlayerGlow" type="PointLight2D" parent="." unique_id=862844225]
 visible = false
 scale = Vector2(1.5, 1.5)
+blend_mode = 2
 texture = ExtResource("3_ss633")
 
 [node name="CollisionCapsule" type="CollisionShape2D" parent="." unique_id=570828746]
@@ -206,7 +208,7 @@ theme_override_colors/font_color = Color(0.501114, 0.440111, 0.233039, 1)
 horizontal_alignment = 1
 
 [node name="Flashlight" parent="." unique_id=1225167653 instance=ExtResource("4_u4d4c")]
-visible = false
+offset = Vector2(71, 0)
 
 [connection signal="Hit" from="." to="Camera2D/PlayerHealth" method="OnPlayerHit"]
 [connection signal="area_entered" from="Hurtbox" to="." method="OnHurtboxAreaEntered"]

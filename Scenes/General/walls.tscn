@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjbcf5mwtvcgo"]
+[gd_scene format=3 uid="uid://bjbcf5mwtvcgo"]
 
-[ext_resource type="Script" path="res://CS Scripts/General/Walls.cs" id="1_khwxr"]
+[ext_resource type="Script" uid="uid://dj1ghbnn6uyo6" path="res://CS Scripts/General/Walls.cs" id="1_khwxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nno24"]
 
-[node name="Wall" type="StaticBody2D"]
+[node name="Wall" type="StaticBody2D" unique_id=943698746]
+texture_filter = 1
 collision_mask = 3
 script = ExtResource("1_khwxr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=389842294]
 position = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_nno24")

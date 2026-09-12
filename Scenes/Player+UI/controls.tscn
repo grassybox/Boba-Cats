@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://csyir0wlb3anh" path="res://assets/player/menu_icon.png" id="3_l32e4"]
 [ext_resource type="Script" uid="uid://cj4ueacns40py" path="res://CS Scripts/Player+UI/InventoryTab.cs" id="4_cjqpt"]
 [ext_resource type="Script" uid="uid://drshf6dbosa44" path="res://CS Scripts/Player+UI/QuestsTab.cs" id="4_s05c4"]
+[ext_resource type="StyleBox" uid="uid://dbgtp2s27tqhu" path="res://assets/themes+materials/brown_button_hover.tres" id="5_s5kqg"]
 [ext_resource type="Script" uid="uid://cqfisidg7l7t7" path="res://CS Scripts/Player+UI/QuitTab.cs" id="7_ctukg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ss1"]
@@ -40,8 +41,9 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s0oq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5kqg"]
 bg_color = Color(0.7764706, 0.67058825, 0.5686275, 1)
+border_color = Color(0.5803922, 0.46666667, 0.3764706, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -72,6 +74,13 @@ corner_radius_bottom_left = 2
 material = ExtResource("1_rmgjv")
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_weoqj")
+
+[node name="EscButton" type="Button" parent="." unique_id=1396069063]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -8.0
+offset_top = 5.0
+offset_right = 8.0
+offset_bottom = 21.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1850521818]
 use_parent_material = true
@@ -165,48 +174,56 @@ offset_left = 8.333351
 offset_top = 43.333332
 offset_right = 28.333351
 offset_bottom = 63.333332
+theme_override_styles/hover = ExtResource("5_s5kqg")
 
 [node name="ItemIcons2" parent="Expanded/ItemsUI" unique_id=671277105 instance=ExtResource("3_h2a03")]
 offset_left = 33.33335
 offset_top = 43.333664
 offset_right = 53.33335
 offset_bottom = 63.333664
+theme_override_styles/hover = ExtResource("5_s5kqg")
 
 [node name="ItemIcons3" parent="Expanded/ItemsUI" unique_id=554236532 instance=ExtResource("3_h2a03")]
 offset_left = 58.33335
 offset_top = 43.333332
 offset_right = 78.33335
 offset_bottom = 63.333332
+theme_override_styles/hover = ExtResource("5_s5kqg")
 
 [node name="ItemIcons4" parent="Expanded/ItemsUI" unique_id=504831661 instance=ExtResource("3_h2a03")]
 offset_left = 83.33335
 offset_top = 43.333664
 offset_right = 103.33335
 offset_bottom = 63.333664
+theme_override_styles/hover = ExtResource("5_s5kqg")
 
 [node name="ItemIcons5" parent="Expanded/ItemsUI" unique_id=541551373 instance=ExtResource("3_h2a03")]
 offset_left = 8.333338
 offset_top = 66.666664
 offset_right = 28.333338
 offset_bottom = 86.666664
+theme_override_styles/hover = ExtResource("5_s5kqg")
 
 [node name="ItemIcons6" parent="Expanded/ItemsUI" unique_id=1810545588 instance=ExtResource("3_h2a03")]
 offset_left = 33.333336
 offset_top = 66.66699
 offset_right = 53.333336
 offset_bottom = 86.66699
+theme_override_styles/hover = ExtResource("5_s5kqg")
 
 [node name="ItemIcons7" parent="Expanded/ItemsUI" unique_id=1853045998 instance=ExtResource("3_h2a03")]
 offset_left = 58.33334
 offset_top = 66.666664
 offset_right = 78.333336
 offset_bottom = 86.666664
+theme_override_styles/hover = ExtResource("5_s5kqg")
 
 [node name="ItemIcons8" parent="Expanded/ItemsUI" unique_id=395949462 instance=ExtResource("3_h2a03")]
 offset_left = 83.333336
 offset_top = 66.66699
 offset_right = 103.333336
 offset_bottom = 86.66699
+theme_override_styles/hover = ExtResource("5_s5kqg")
 
 [node name="QuitOptions" type="Node2D" parent="Expanded" unique_id=1993349784]
 unique_name_in_owner = true
@@ -220,7 +237,9 @@ offset_right = 107.00001
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(0.18039216, 0.13725491, 0.09803922, 1)
 theme_override_font_sizes/font_size = 10
-theme_override_styles/normal = SubResource("StyleBoxFlat_3s0oq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s5kqg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s5kqg")
+theme_override_styles/hover = ExtResource("5_s5kqg")
 text = "Return to Title Screen"
 
 [node name="CloseGameButton" type="Button" parent="Expanded/QuitOptions" unique_id=517177661]
@@ -231,7 +250,8 @@ offset_right = 83.66667
 offset_bottom = 63.333324
 theme_override_colors/font_color = Color(0.18039216, 0.13725491, 0.09803922, 1)
 theme_override_font_sizes/font_size = 10
-theme_override_styles/normal = SubResource("StyleBoxFlat_3s0oq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s5kqg")
+theme_override_styles/hover = ExtResource("5_s5kqg")
 text = "Close Game"
 
 [node name="ControlsTab" type="Button" parent="." unique_id=1492932275]
@@ -245,6 +265,7 @@ theme_override_colors/font_color = Color(0.23, 0.17533667, 0.124199994, 1)
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_6f04i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lpg6r")
+theme_override_styles/hover = ExtResource("5_s5kqg")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_017sx")
 text = "Ctrls"
@@ -261,6 +282,7 @@ theme_override_colors/font_color = Color(0.18039216, 0.13725491, 0.09803922, 1)
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_6f04i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lpg6r")
+theme_override_styles/hover = ExtResource("5_s5kqg")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_017sx")
 text = "Items"
@@ -277,6 +299,7 @@ theme_override_colors/font_color = Color(0.18039216, 0.13725491, 0.09803922, 1)
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_6f04i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lpg6r")
+theme_override_styles/hover = ExtResource("5_s5kqg")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_017sx")
 text = "Quests
@@ -294,11 +317,13 @@ theme_override_colors/font_color = Color(0.18039216, 0.13725491, 0.09803922, 1)
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_6f04i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lpg6r")
+theme_override_styles/hover = ExtResource("5_s5kqg")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_017sx")
 text = "Quit"
 script = ExtResource("7_ctukg")
 
+[connection signal="pressed" from="EscButton" to="." method="OnEscButtonPressed"]
 [connection signal="pressed" from="Expanded/QuitOptions/MainMenuButton" to="QuitTab" method="OnMainMenuButtonPressed"]
 [connection signal="pressed" from="Expanded/QuitOptions/CloseGameButton" to="QuitTab" method="OnCloseGameButtonPressed"]
 [connection signal="pressed" from="ControlsTab" to="ControlsTab" method="OnButtonPressed"]

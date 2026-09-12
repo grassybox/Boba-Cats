@@ -57,8 +57,6 @@ public partial class GlobalScript : Node
 		}
 	}
 
-	
-
 	/// <summary>
 	/// Stores whether each coin has been collected. True if collected.
 	/// </summary>
@@ -251,11 +249,22 @@ public partial class GlobalScript : Node
 		ClamsCollected.Fill(false);
 	}
 
+	//Resource cursor = ResourceLoader.Load("path");
+	public static Resource flashlightCursor = ResourceLoader.Load("res://assets/icons/flashlight.png");
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		InitializeArrays();
 	}	
+
+	public static void ChangeCursor(String cursor)
+	{
+		if (cursor.ToLower() == "flashlight")
+		{
+			Input.SetCustomMouseCursor(flashlightCursor);
+		}
+	}
 	
 	public static void LoadGame() {
 		if (ResourceLoader.Exists(savePath)) {
@@ -306,4 +315,13 @@ public partial class GlobalScript : Node
 		Inventory.Add(item);
 		SaveGame();
 	}
+
+	//handle player pressing 'X'
+	// public override void _Notification(int notif)
+	// {
+	// 	if (notif == NotificationWMCloseRequest)
+	// 	{
+	// 		GetTree().Quit();
+	// 	}
+	// }
 }

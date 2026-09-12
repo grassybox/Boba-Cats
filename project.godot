@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Boba cats!"
+config/name="Boba Cats!"
 run/main_scene="uid://d3lmqv54tdb7j"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="uid://dvvimneworgny"

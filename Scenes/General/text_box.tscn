@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b28lwwf0dhiu6"]
 
 [ext_resource type="Script" uid="uid://tdptr3e5wguu" path="res://CS Scripts/General/TextBox.cs" id="1_l67vn"]
+[ext_resource type="Material" uid="uid://cuxgp8trfyrih" path="res://assets/themes+materials/unshaded_material.tres" id="1_vnr24"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smhyf"]
 bg_color = Color(0.9843137, 0.9647059, 0.89411765, 0.8392157)
@@ -15,6 +16,7 @@ corner_radius_bottom_left = 3
 
 [node name="TextBox" type="Node2D" unique_id=1326538900]
 z_index = 3
+material = ExtResource("1_vnr24")
 script = ExtResource("1_l67vn")
 
 [node name="Timer" type="Timer" parent="." unique_id=1094799844]
@@ -22,6 +24,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1878946196]
+use_parent_material = true
 offset_left = -56.0
 offset_top = -164.0
 offset_right = 57.0
@@ -30,6 +33,7 @@ theme_override_constants/separation = 0
 alignment = 2
 
 [node name="Panel" type="Panel" parent="VBoxContainer" unique_id=776082256]
+use_parent_material = true
 custom_minimum_size = Vector2(5, 10)
 custom_maximum_size = Vector2(50, -1)
 layout_mode = 2
@@ -37,6 +41,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_smhyf")
 
 [node name="Label" type="Label" parent="VBoxContainer/Panel" unique_id=755599218]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 0
 offset_right = 98.0
 offset_bottom = 20.0
@@ -48,6 +53,7 @@ vertical_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1051445124]
 texture_filter = 1
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_3u124")
@@ -55,6 +61,7 @@ metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=14221366]
 texture_filter = 1
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
@@ -64,6 +71,7 @@ theme_override_constants/margin_bottom = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=1706023130]
 unique_name_in_owner = true
 texture_filter = 1
+use_parent_material = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 bbcode_enabled = true

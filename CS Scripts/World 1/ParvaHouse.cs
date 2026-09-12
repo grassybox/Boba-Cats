@@ -79,6 +79,32 @@ public partial class ParvaHouse : Node2D
 			player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = "sit_right";	
 			player.Position = new Vector2(78, 132);
 
+			//=new stuff
+			var parva = pT.GetParent<AnimatedSprite2D>();
+			pT.Position = new Vector2(pT.Position.X, pT.Position.Y - 20);
+			await pT.ShowText("something about how I have ingredients for yet another experiment to make brown sugar boba!");
+			parva.FlipH = true;
+			GetNode<Node2D>("%SingleBoba").Show();
+			await pT.ShowText("Boba!");
+			parva.FlipH = false;
+			GetNode<Node2D>("%Sugar").Show();
+			await pT.ShowText("Sugar!");
+			await dT.ShowText("something about how that's not how it works. "
+				+" brown sugar boba needs brown sugar. not just regular sugar");
+			await pT.ShowText("confused");
+			parva.FlipH = true;
+			await pT.ShowText("brown...");
+			parva.FlipH = false;
+			await pT.ShowText("sugar...");
+			parva.FlipH = true;
+			await pT.ShowText("boba...");
+			parva.FlipH = false;
+			await pT.ShowText("something about actually no you're wrong lemme show you");
+			animationPlayer.Play("make_goo");
+			await ToSignal(animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
+			pT.Position = new Vector2(pT.Position.X, pT.Position.Y + 20);
+			await pT.ShowText("aw man it just made goo again");
+
 			await pT.ShowText("A [i]visitor[/i]. Well, I must say I'm surprised you got past the vines.");
 			await pT.ShowText("You don't seem like one of those...[i]town cats[/i]. Why don't you come have a seat?");
 

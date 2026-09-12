@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://5txp0r25uqf7" path="res://assets/backgrounds/box_room/box_room6.png" id="21_i6hwf"]
 [ext_resource type="Script" uid="uid://b7xd8usshxmo" path="res://CS Scripts/World 1/RollingBomb.cs" id="22_3mgmj"]
 [ext_resource type="Texture2D" uid="uid://vxeeag75b113" path="res://assets/objects/bomb.png" id="23_0cudt"]
+[ext_resource type="Texture2D" uid="uid://edvy3hdoy13k" path="res://assets/objects/BOOM.png" id="24_0370c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i07pw"]
 animations = [{
@@ -279,3 +280,14 @@ texture = ExtResource("23_0cudt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RollingBomb" unique_id=1346917591]
 position = Vector2(205, 121)
 shape = SubResource("CircleShape2D_twqg6")
+
+[node name="BOOM" type="Sprite2D" parent="RollingBomb" unique_id=1240020142]
+visible = false
+position = Vector2(205, 121)
+texture = ExtResource("24_0370c")
+
+[node name="Timer" type="Timer" parent="RollingBomb" unique_id=2120595459]
+wait_time = 100.0
+autostart = true
+
+[connection signal="timeout" from="RollingBomb/Timer" to="RollingBomb" method="OnTimerTimeout"]

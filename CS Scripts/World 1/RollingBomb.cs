@@ -20,4 +20,12 @@ public partial class RollingBomb : RigidBody2D
 			shape.GlobalPosition = new Vector2(205, 119);
 		}
 	}
+
+	private async void OnTimerTimeout()
+	{
+		GetNode<Node2D>("BOOM").Show();
+		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+		Hide();
+		SetDeferred("freeze", true);
+	}
 }

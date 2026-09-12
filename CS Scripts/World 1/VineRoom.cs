@@ -7,8 +7,20 @@ public partial class VineRoom : Node2D
 	private bool transitioning = false;
 
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public override async void _Ready() 
 	{
+		if (GetNode<Node2D>("UnderwaterPlayer").Position.X < 200)
+		{
+			Camera2D camera = GetNode<Camera2D>("UnderwaterPlayer/Camera2D");
+			camera.SetLimit(Side.Right, 500);
+			camera.SetLimit(Side.Bottom, 180);
+
+			transitioning = true;
+			AnimationPlayer anim = GetNode<AnimationPlayer>("AnimationPlayer");
+			anim.Play("enter_room");
+			await anim.ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+			transitioning = false;
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

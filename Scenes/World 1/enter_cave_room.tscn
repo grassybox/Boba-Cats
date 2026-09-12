@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b2eu1rt08rowb" path="res://Scenes/Player+UI/ground_player.tscn" id="4_recxf"]
 [ext_resource type="Texture2D" uid="uid://b1y6i4bvlfvbv" path="res://assets/backgrounds/enter_cave_room/enter_cave_ground.png" id="5_363r7"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://Scenes/General/walls.tscn" id="6_urne7"]
+[ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://Scenes/General/text_box.tscn" id="7_4mxyx"]
 [ext_resource type="PackedScene" uid="uid://bi2pjfm4ck8l2" path="res://Scenes/World 1/growable_vine.tscn" id="7_pcuo8"]
 [ext_resource type="Material" uid="uid://cuxgp8trfyrih" path="res://assets/themes+materials/unshaded_material.tres" id="9_41vdj"]
 [ext_resource type="PackedScene" uid="uid://dhctxpw3i8rpf" path="res://Scenes/General/darkness.tscn" id="9_gx1af"]
@@ -47,6 +48,8 @@ position = Vector2(193, 57)
 [node name="GroundPlayer" parent="." unique_id=277490598 instance=ExtResource("4_recxf")]
 position = Vector2(124, 119)
 metadata/_edit_group_ = true
+
+[node name="TextBox" parent="GroundPlayer" unique_id=1326538900 instance=ExtResource("7_4mxyx")]
 
 [node name="Ground" type="Sprite2D" parent="." unique_id=175110136]
 texture_filter = 1

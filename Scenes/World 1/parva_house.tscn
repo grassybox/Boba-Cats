@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://ygrr56bstc00" path="res://Scenes/General/interact_label.tscn" id="11_2rh7x"]
 [ext_resource type="Texture2D" uid="uid://todgqw1v8vut" path="res://assets/background_items/pile_of_boba.png" id="12_ap5pc"]
 [ext_resource type="Texture2D" uid="uid://c6sjgcysf8i6y" path="res://assets/npcs/azucat.png" id="13_ijhwr"]
+[ext_resource type="Texture2D" uid="uid://c0hpe1vih5of3" path="res://assets/background_items/single_boba.png" id="15_hwt7o"]
+[ext_resource type="Texture2D" uid="uid://dge2msshkv4ln" path="res://assets/background_items/sugar.png" id="16_c112s"]
+[ext_resource type="Texture2D" uid="uid://dc20uewh44rer" path="res://assets/background_items/goo.png" id="17_grdoo"]
 
 [sub_resource type="Animation" id="Animation_3ij2s"]
 resource_name = "Azucat_Catssava_run"
@@ -252,6 +255,155 @@ tracks/9/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("GooAnimation/Goo:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(161, 100)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("GooAnimation/SingleBoba:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("GooAnimation/Sugar:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("GooAnimation/Goo:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("GooAnimation/SingleBoba:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(215, 105)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("GooAnimation/Sugar:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(185, 105)]
+}
+
+[sub_resource type="Animation" id="Animation_4xhn5"]
+resource_name = "make_goo"
+length = 4.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GooAnimation/SingleBoba:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.9, 1.2, 1.5, 1.8000001, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(215, 105), Vector2(191, 105), Vector2(161, 110), Vector2(131, 105), Vector2(161, 100), Vector2(191, 105), Vector2(161, 110), Vector2(131, 105), Vector2(161, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GooAnimation/Sugar:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.90000004, 1.2, 1.5, 1.8000001, 2.1000001, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(185, 105), Vector2(131, 105), Vector2(161, 100), Vector2(191, 105), Vector2(161, 110), Vector2(131, 105), Vector2(161, 100), Vector2(191, 105), Vector2(161, 110)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GooAnimation/Goo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.7, 3.4, 3.7, 3.8000002, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(161, 100), Vector2(161, 100), Vector2(161, 100), Vector2(161, 126), Vector2(161, 125), Vector2(161, 126)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GooAnimation/SingleBoba:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GooAnimation/Sugar:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GooAnimation/Goo:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_1mmkj"]
 resource_name = "open_trapdoor"
@@ -288,6 +440,7 @@ _data = {
 &"Azucat_Catssava_run": SubResource("Animation_3ij2s"),
 &"Parva_chase": SubResource("Animation_0el3g"),
 &"RESET": SubResource("Animation_pf4bv"),
+&"make_goo": SubResource("Animation_4xhn5"),
 &"open_trapdoor": SubResource("Animation_1mmkj"),
 &"sit_down": SubResource("Animation_a8e0l")
 }
@@ -369,6 +522,25 @@ scale = Vector2(0.7, 0.6)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2105384819]
 libraries/ = SubResource("AnimationLibrary_jf6cr")
+
+[node name="GooAnimation" type="Node2D" parent="." unique_id=1400494921]
+
+[node name="SingleBoba" type="Sprite2D" parent="GooAnimation" unique_id=1966885063]
+unique_name_in_owner = true
+visible = false
+position = Vector2(215, 105)
+texture = ExtResource("15_hwt7o")
+
+[node name="Sugar" type="Sprite2D" parent="GooAnimation" unique_id=2025213016]
+unique_name_in_owner = true
+visible = false
+position = Vector2(185, 105)
+texture = ExtResource("16_c112s")
+
+[node name="Goo" type="Sprite2D" parent="GooAnimation" unique_id=3494054]
+visible = false
+position = Vector2(161, 100)
+texture = ExtResource("17_grdoo")
 
 [node name="Parva" type="AnimatedSprite2D" parent="." unique_id=1292173221]
 position = Vector2(200, 129)

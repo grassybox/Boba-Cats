@@ -97,7 +97,7 @@ position = Vector2(380, 0)
 scale = Vector2(1, 10)
 
 [node name="TubeCoral" parent="." unique_id=1154713772 instance=ExtResource("9_5affo")]
-position = Vector2(233, 142)
+position = Vector2(236, 142)
 
 [node name="TubeCoral2" parent="." unique_id=193744596 instance=ExtResource("9_5affo")]
 position = Vector2(100, 142)

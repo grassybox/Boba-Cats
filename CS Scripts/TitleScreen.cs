@@ -41,14 +41,21 @@ public partial class TitleScreen : Node2D
 	public async void ShipCrashCutscene() {
 		GetNode<Control>("Buttons").Hide();
 		GetNode<CanvasLayer>("FilePicker").Hide();
-			var animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-			animatedSprite.Animation = "opening";
-			animatedSprite.Play();
-			await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
-
-			var GlobalSceneChange = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
-			await GlobalSceneChange.ChangeRoom(new Vector2(35, 138), "first_room", true);
+		var animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		animatedSprite.Animation = "opening";
+		animatedSprite.Play();
+		var animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		animationPlayer.Play("skip_button_fade_in");
+		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+		ToFirstRoom();
 	}
+
+	private async void ToFirstRoom()
+	{
+		var GlobalSceneChange = GetNode<GlobalSceneChange>("/root/GlobalSceneChange");
+		await GlobalSceneChange.ChangeRoom(new Vector2(35, 138), "first_room", true);
+	}
+
 	public void OnExitFilePicker() {
 		GetNode<CanvasLayer>("FilePicker").Hide();
 	}

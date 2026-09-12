@@ -85,48 +85,46 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aew8w"]
 _data = {
-"RESET": SubResource("Animation_454wq"),
-"open": SubResource("Animation_2yiii")
+&"RESET": SubResource("Animation_454wq"),
+&"open": SubResource("Animation_2yiii")
 }
 
-[node name="Gate" type="Node2D"]
+[node name="Gate" type="Node2D" unique_id=1450104699]
 script = ExtResource("1_jp7k6")
 
-[node name="Bottom" type="Sprite2D" parent="."]
+[node name="Bottom" type="Sprite2D" parent="." unique_id=1842473206]
 position = Vector2(0, 45)
 texture = ExtResource("2_s1goc")
 metadata/_edit_group_ = true
 
-[node name="Wall" parent="Bottom" instance=ExtResource("3_e0na8")]
+[node name="Wall" parent="Bottom" unique_id=986416731 instance=ExtResource("3_e0na8")]
 position = Vector2(-9, -45)
 scale = Vector2(0.9, 4.5)
 
-[node name="Top" type="Sprite2D" parent="."]
+[node name="Top" type="Sprite2D" parent="." unique_id=1099384654]
 position = Vector2(0, -45)
 rotation = 3.14159
 texture = ExtResource("2_s1goc")
 
-[node name="Wall" parent="Top" instance=ExtResource("3_e0na8")]
+[node name="Wall" parent="Top" unique_id=482344472 instance=ExtResource("3_e0na8")]
 position = Vector2(9, 45)
 rotation = 3.14159
 scale = Vector2(0.9, 4.5)
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=113058064]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -8.0
 offset_top = -9.0
 offset_right = 8.0
 offset_bottom = 8.0
 
-[node name="ButtonSprite" type="Sprite2D" parent="Button"]
+[node name="ButtonSprite" type="Sprite2D" parent="Button" unique_id=2005317559]
 position = Vector2(8, 9)
 texture = ExtResource("1_jqibk")
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_aew8w")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=960555611]
+libraries/ = SubResource("AnimationLibrary_aew8w")
 
 [connection signal="button_down" from="Button" to="." method="OnButtonDown"]
 [connection signal="button_up" from="Button" to="." method="OnButtonUp"]

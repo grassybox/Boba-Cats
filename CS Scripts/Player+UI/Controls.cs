@@ -31,7 +31,18 @@ public partial class Controls : Node2D
 	
 	public override void _Input(InputEvent @event) {
 		if (Input.IsActionJustPressed("toggle_controls_menu")) {
-			var expanded = GetNode<Panel>("Expanded");
+			ToggleMenu();
+		}
+	}
+
+	private void OnEscButtonPressed()
+	{
+		ToggleMenu();
+	}
+
+	private void ToggleMenu()
+	{
+		var expanded = GetNode<Panel>("Expanded");
 			if (MenuOpen) {
 				expanded.Hide();
 				cT.Hide();
@@ -50,6 +61,5 @@ public partial class Controls : Node2D
 				cT.OnButtonPressed();
 			}
 			MenuOpen = !MenuOpen;
-		}
 	}
 }
