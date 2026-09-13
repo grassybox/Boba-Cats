@@ -82,16 +82,18 @@ public partial class ParvaHouse : Node2D
 			//=new stuff
 			var parva = pT.GetParent<AnimatedSprite2D>();
 			pT.Position = new Vector2(pT.Position.X, pT.Position.Y - 20);
-			await pT.ShowText("something about how I have ingredients for yet another experiment to make brown sugar boba!");
+			await pT.ShowText("At last. I have gathered the ingredients for BROWN SUGAR BOBA!");
 			parva.FlipH = true;
 			GetNode<Node2D>("%SingleBoba").Show();
 			await pT.ShowText("Boba!");
 			parva.FlipH = false;
 			GetNode<Node2D>("%Sugar").Show();
 			await pT.ShowText("Sugar!");
-			await dT.ShowText("something about how that's not how it works. "
-				+" brown sugar boba needs brown sugar. not just regular sugar");
-			await pT.ShowText("confused");
+			await dT.ShowText("...");
+			await dT.ShowText("Hello - excuse me - I don't think it works like that.");
+			await dT.ShowText("Brown sugar boba needs...well...brown sugar. That's just regular sugar.");
+			await pT.ShowText("Hrmph! Who are you? What would you know about it?");
+			await pT.ShowText("What you said can't possibly be true...right...?");
 			parva.FlipH = true;
 			await pT.ShowText("brown...");
 			parva.FlipH = false;
@@ -99,14 +101,17 @@ public partial class ParvaHouse : Node2D
 			parva.FlipH = true;
 			await pT.ShowText("boba...");
 			parva.FlipH = false;
-			await pT.ShowText("something about actually no you're wrong lemme show you");
+			await pT.ShowText("This has to be right. I've been trying to make brown sugar boba for years! I know what I'm doing.");
+			await pT.ShowText("OBSERVE AS I MAKE BROWN SUGAR BOBA!");
 			animationPlayer.Play("make_goo");
 			await ToSignal(animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
 			pT.Position = new Vector2(pT.Position.X, pT.Position.Y + 20);
-			await pT.ShowText("aw man it just made goo again");
+			await pT.ShowText("What are you looking at?!");
+			await dT.ShowText("That's...some interesting brown sugar boba.");
+			await pT.ShowText("Just admit it alright? It's goo. It's always goo. WHY IS IT ALWAYS GOO???");
 
-			await pT.ShowText("A [i]visitor[/i]. Well, I must say I'm surprised you got past the vines.");
-			await pT.ShowText("You don't seem like one of those...[i]town cats[/i]. Why don't you come have a seat?");
+			await dT.ShowText("Because brown sugar boba needs brown sugar. I'd know because I'm on a quest to find it too.");
+			await pT.ShowText("Hmmm interesting. Very well. Why don't you come have a seat?");
 
 			//move to seat:
 			if (dash is Player p1)
@@ -121,11 +126,12 @@ public partial class ParvaHouse : Node2D
 				sprite.Animation = "sit_right";
 			}
 
-			await pT.ShowText("That's more like it. My name is Parva. Now, what have you come all this way for, brown cat?");
+			await pT.ShowText("That's more like it. My name is Parva. Now, what has brought you here, brown cat?");
+			await pT.ShowText("Perhaps you've heard of my soon-to-be greatness?");
 
 			pT.Known(true);
-			await dT.ShowText("I'm Dash. I've been on a quest to find the fabled brown sugar boba.");
-			await dT.ShowText("Unfortunately, my ship crashed and I ended up underwater.");
+			await dT.ShowText("I'm Dash. My ship crashed and I ended up underwater.");
+			await dT.ShowText("My search for the fabled brown sugar boba led me here. I need boba, after all.");
 			//await dT.showText("It seems like this place has every kind of boba except for that. I've looked everywhere.");
 			//no they don't have every kind of boba because someone stole it all... lol
 
