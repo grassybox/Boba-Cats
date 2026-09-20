@@ -2,6 +2,47 @@
 
 [ext_resource type="Texture2D" uid="uid://cqch0hxn04p2f" path="res://assets/lights/player_glow.png" id="1_33pr6"]
 [ext_resource type="Texture2D" uid="uid://dod3cx440kdjo" path="res://assets/background_items/lantern.png" id="2_10hjl"]
+[ext_resource type="Material" uid="uid://cuxgp8trfyrih" path="res://assets/themes+materials/unshaded_material.tres" id="2_u04hq"]
+[ext_resource type="Texture2D" uid="uid://d088yextgrqx8" path="res://assets/lights/lamplight0.png" id="4_elv2a"]
+
+[sub_resource type="Animation" id="Animation_hvyn4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_33pr6")]
+}
+
+[sub_resource type="Animation" id="Animation_qx7qu"]
+resource_name = "lamplight"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_elv2a"), ExtResource("1_33pr6")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bkry"]
+_data = {
+&"RESET": SubResource("Animation_hvyn4"),
+&"lamplight": SubResource("Animation_qx7qu")
+}
 
 [node name="Lantern" type="Node2D" unique_id=156043816]
 
@@ -12,4 +53,9 @@ texture = ExtResource("1_33pr6")
 
 [node name="Lamp" type="Sprite2D" parent="." unique_id=575303179]
 texture_filter = 1
+material = ExtResource("2_u04hq")
 texture = ExtResource("2_10hjl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1974698000]
+libraries/ = SubResource("AnimationLibrary_1bkry")
+autoplay = &"lamplight"

@@ -11,10 +11,11 @@ public partial class Seabunny : CharacterBody2D
 	public int Hp;
 
 	public Vector2 StartPos;
-
+	private static int LeftVineX = 386;
+	private static int RightVineX = 555;
 	private AnimatedSprite2D animatedSprite;
 	private Godot.Timer idleTimer;
-	private Boolean facingLeft;
+	public Boolean facingLeft;
 	private PackedScene bullet;
 
 	// Called when the node enters the scene tree for the first time.
@@ -25,7 +26,7 @@ public partial class Seabunny : CharacterBody2D
 		facingLeft = true;
 		Velocity = Vector2.Zero;
 		bullet = GD.Load<PackedScene>("res://Scenes/World 1/seabunnybullet.tscn");
-		GD.Randomize();
+		GD.Randomize(); //=
 		
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
@@ -62,6 +63,7 @@ public partial class Seabunny : CharacterBody2D
 			x: Mathf.Clamp(Position.X, 333, 600),
 			y: Position.Y
 		);
+		// GD.Print(animatedSprite.Animation);//=
 	}
 
 	public async void StartFight()
@@ -89,23 +91,31 @@ public partial class Seabunny : CharacterBody2D
 		var anim = GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
 		Velocity = Vector2.Zero;
 		
+		GD.Print("calling cutsene dash...");//=
 		await CutsceneDash(true);
+		GD.Print("cutscene dash finished");//=
 
-		Position = new Vector2(386, 205);
+		Position = new Vector2(LeftVineX, 205);
 		animatedSprite.FlipH = false;
 		animatedSprite.Animation = "start_climb";
+		GD.Print("Starting climb...");//=
 		animatedSprite.Play();
+		animatedSprite.Animation = "start_climb";
 		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
 
 		animatedSprite.Animation = "climbing";
 		animatedSprite.Play();
 		anim.Play("climb_left_vine");
+		GD.Print("waiting");//=
 		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
+		GD.Print("finished climb=====================================");//=
 
 		GetParent().GetNode<GrowableVine>("GrowableVineLeft").Eaten();
 
+		GD.Print("switching animation==========================");//=
 		animatedSprite.Animation = "end_climb";
 		animatedSprite.Play();
+		GD.Print("Switched animation");//=
 		anim.Play("fall_left_vine");
 		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
 
@@ -117,6 +127,16 @@ public partial class Seabunny : CharacterBody2D
 		InCutscene = false;
 		OnIdleTimerTimeout();
 	}
+
+	//=
+	public override void _Input(InputEvent @event)
+	{
+		if (Input.IsActionJustPressed("yes"))
+		{
+			GD.Print(Position);//=
+		}
+	}
+
 	public async Task EndFight()
 	{
 		Hp --;
@@ -128,8 +148,7 @@ public partial class Seabunny : CharacterBody2D
 		
 		await CutsceneDash(false);
 
-		Position = new Vector2(555, 205);
-		animatedSprite.FlipH = false;
+		Position = new Vector2(RightVineX, 205);
 		animatedSprite.Animation = "start_climb";
 		animatedSprite.Play();
 		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
@@ -139,6 +158,7 @@ public partial class Seabunny : CharacterBody2D
 		anim.Play("climb_vine");
 		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
 
+		animatedSprite.FlipH = false;
 		animatedSprite.Animation = "end_climb";
 		animatedSprite.Play();
 		anim.Play("fall");
@@ -149,15 +169,24 @@ public partial class Seabunny : CharacterBody2D
 		InCutscene = false;
 	}
 
-	private void OnPlayerRespawn()
+	/// <summary>
+	/// Resets the boss. To be called in SeaBunnyRoom/OnPlayerRepawn
+	/// </summary>
+	public void ResetMiniboss()
 	{
+		facingLeft = true;
+		animatedSprite.FlipH = false;
+		InFight = false;
 		Position = StartPos;
+		GD.Print(Position + " Should be " + StartPos);//=
+		Modulate = new Color(1, 1, 1, 1);
+		Hp = 2;
 	}
 
 	//every time it is done waiting, do another attack
 	private async void OnIdleTimerTimeout()
 	{
-		if (InFight)
+		if (InFight && !InCutscene) //=
 		{
 			await DoAttack();
 		}
@@ -185,17 +214,22 @@ public partial class Seabunny : CharacterBody2D
 
 	private async Task CutsceneDash(bool left)
 	{
+		GD.Print("Cutscene dash!");//=
 		if (left)
 		{
+			GD.Print("Starting cutscene dash");//=
 			facingLeft = true;
 			animatedSprite.FlipH = false;
-			await Dash(2);
+			int numDashes = (int) Math.Abs(Math.Round((Position.X - LeftVineX) / 84));
+			await Dash(numDashes);
 		}
 		else
 		{
 			facingLeft = false;
 			animatedSprite.FlipH = true;
-			await Dash(3);
+			int numDashes = (int) Math.Abs(Math.Round((RightVineX - Position.X) / 84));
+			GD.Print(numDashes);//=
+			await Dash(numDashes);
 		}
 	}
 
@@ -223,6 +257,8 @@ public partial class Seabunny : CharacterBody2D
 	//loops: how many times to loop the dashing animation
 	private async Task Dash(int loops)
 	{
+		GD.Print("Dash");//=
+		if (loops == 0) return;
 		animatedSprite.Animation = "start_dash";
 		animatedSprite.Play(); //idk if we need to call Play() every time
 		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
@@ -230,7 +266,7 @@ public partial class Seabunny : CharacterBody2D
 		animatedSprite.Animation = "dashing";
 		animatedSprite.Play();
 		
-		if (facingLeft)
+		if (facingLeft && !InCutscene)
 		{
 			Velocity = new Vector2(-dashSpeed, 0); //set velocity.x to -dashSpeed
 		}
@@ -243,20 +279,23 @@ public partial class Seabunny : CharacterBody2D
 		for (int i = 0; i < loops; i ++)
 		{
 			await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationLooped);
-			if (!facingLeft && Position.X > 555)
-			{
-				break;
-			}
+			// if (!facingLeft && Position.X > RightVineX)
+			// {
+			// 	break;
+			// }
 			if (!InFight && facingLeft && Position.X < 395)
 			{
 				break;
 			}
 		}
-
-		Velocity = Vector2.Zero;
-		animatedSprite.Animation = "end_dash";
-		animatedSprite.Play();
-		await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+		
+		if (!InCutscene)
+		{
+			Velocity = Vector2.Zero;
+			animatedSprite.Animation = "end_dash";
+			animatedSprite.Play();
+			await ToSignal(animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+		}
 	}
 
 	private async Task Spin()

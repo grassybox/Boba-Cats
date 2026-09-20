@@ -171,10 +171,11 @@ public partial class GroundPlayer : Player
 	}
 
 	//can change the code to go to different room instead
+	//= can this be deleted?
 	private void OOBCheck() {
 		var pos = GlobalPosition;
-		if (GetParent().Name == "EnterCaveRoom" && pos.Y > 180) {
-			base.Respawn(); //change this
-		}
+		// if (GetParent().Name == "EnterCaveRoom" && pos.Y > 180) {
+		// 	base.Respawn(); //=change this
+		// }
 	}
 }

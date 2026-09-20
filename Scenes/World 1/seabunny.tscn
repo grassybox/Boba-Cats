@@ -367,9 +367,11 @@ _data = {
 
 [node name="Seabunny" type="CharacterBody2D" unique_id=1257427764]
 material = ExtResource("2_o63nk")
+position = Vector2(-18, -17)
 scale = Vector2(0.9, 0.9)
 motion_mode = 1
 script = ExtResource("1_lxr8e")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=270530088]
 texture_filter = 1

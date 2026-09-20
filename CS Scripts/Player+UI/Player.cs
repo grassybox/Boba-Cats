@@ -11,6 +11,7 @@ public partial class Player : CharacterBody2D
 	[Signal]
 	public delegate void DiedEventHandler();
 
+	/** emitted during the fade to black **/
 	[Signal]
 	public delegate void RespawnedEventHandler();
 
@@ -112,7 +113,7 @@ public partial class Player : CharacterBody2D
 	}
 
 	//get hit
-	private async void GetHit()
+	private async Task GetHit()
 	{
 		ChangeHP(-1);
 		Flash = true;
@@ -131,6 +132,7 @@ public partial class Player : CharacterBody2D
 		{
 			respawning = true;
 			EmitSignal(SignalName.Died);
+			GD.Print("Died");//==
 			await Respawn();
 		}
 	}
@@ -261,6 +263,8 @@ public partial class Player : CharacterBody2D
 
 		GlobalPosition = pos;
 		SetHP(2);
+		EmitSignal(SignalName.Respawned);
+		GD.Print("emitted respawn");//=
 		
 		respawnFadingIn = false;
 		FacingRight = true;
@@ -269,7 +273,6 @@ public partial class Player : CharacterBody2D
 		invulnerable = false;
 		respawning = false;
 		disableMovement = false;
-		EmitSignal(SignalName.Respawned);
 	}
 
 	public void SetVelocityModifier(Vector2 vel)

@@ -9,7 +9,6 @@ size = Vector2(131, 62)
 [node name="Flashlight" type="PointLight2D" unique_id=237208525]
 visible = false
 texture_filter = 1
-blend_mode = 2
 texture = ExtResource("1_3icum")
 offset = Vector2(70, 0)
 script = ExtResource("2_bnjar")

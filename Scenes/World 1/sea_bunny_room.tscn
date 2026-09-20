@@ -237,7 +237,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mysty"]
 resource_name = "fall_left_vine"
-length = 0.6
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -388,6 +387,97 @@ _data = {
 &"vine_appear": SubResource("Animation_fxg7h")
 }
 
+[sub_resource type="Animation" id="Animation_okihe"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArenaGate/Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 73)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArenaGate/Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -73)]
+}
+
+[sub_resource type="Animation" id="Animation_hfohd"]
+resource_name = "gate_close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArenaGate/Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 73), Vector2(0, 45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArenaGate/Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -73), Vector2(0, -45)]
+}
+
+[sub_resource type="Animation" id="Animation_noy3e"]
+resource_name = "gate_open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArenaGate/Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 45), Vector2(0, 73)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArenaGate/Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -45), Vector2(0, -73)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_okihe"]
+_data = {
+&"RESET": SubResource("Animation_okihe"),
+&"gate_close": SubResource("Animation_hfohd"),
+&"gate_open": SubResource("Animation_noy3e")
+}
+
 [node name="SeaBunnyRoom" type="Node2D" unique_id=2019503466]
 script = ExtResource("1_br8jm")
 
@@ -457,7 +547,7 @@ position = Vector2(324, 212)
 metadata/_edit_group_ = true
 
 [node name="Bottom" type="Sprite2D" parent="ArenaGate" unique_id=1307907111]
-position = Vector2(0, 45)
+position = Vector2(0, 73)
 texture = ExtResource("12_ptfrq")
 metadata/_edit_group_ = true
 
@@ -466,7 +556,7 @@ position = Vector2(-9, -45)
 scale = Vector2(0.9, 4.5)
 
 [node name="Top" type="Sprite2D" parent="ArenaGate" unique_id=1147685018]
-position = Vector2(0, -45)
+position = Vector2(0, -73)
 rotation = 3.14159
 texture = ExtResource("12_ptfrq")
 
@@ -509,7 +599,7 @@ position = Vector2(588, 134)
 scale = Vector2(3, 0.5)
 
 [node name="LeftVineTrigger" type="Area2D" parent="." unique_id=1247712180]
-position = Vector2(400, 126)
+position = Vector2(400, 171)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_group_ = true
@@ -556,6 +646,9 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=340844384]
 libraries/ = SubResource("AnimationLibrary_v2uxj")
+
+[node name="GateAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2068488208]
+libraries/ = SubResource("AnimationLibrary_okihe")
 
 [connection signal="Died" from="GroundPlayer" to="." method="OnPlayerDied"]
 [connection signal="Respawned" from="GroundPlayer" to="." method="OnPlayerRespawn"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://cuxgp8trfyrih" path="res://assets/themes+materials/unshaded_material.tres" id="1_g0rqn"]
 [ext_resource type="Script" uid="uid://b3p34uvhqj7mq" path="res://CS Scripts/Player+UI/Player.cs" id="1_vr4g2"]
-[ext_resource type="Texture2D" uid="uid://bcvdbhbrqjkwo" path="res://assets/lamplight/lamplight0.png" id="3_ss633"]
+[ext_resource type="Texture2D" uid="uid://d088yextgrqx8" path="res://assets/lights/lamplight0.png" id="3_ss633"]
 [ext_resource type="PackedScene" uid="uid://dif3m6ljwdlny" path="res://Scenes/Player+UI/controls.tscn" id="4_o0s2x"]
 [ext_resource type="PackedScene" uid="uid://qgqaega0h2io" path="res://Scenes/Player+UI/flashlight.tscn" id="4_u4d4c"]
 [ext_resource type="PackedScene" uid="uid://dacucl1yyxuex" path="res://Scenes/General/text_enter_label.tscn" id="5_sg0de"]

@@ -5,8 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://qog2naajank2" path="res://assets/backgrounds/box_room/box_room1.png" id="3_2n2oi"]
 [ext_resource type="Texture2D" uid="uid://kv1s5jsmg3bm" path="res://assets/backgrounds/box_room/box_room2.png" id="4_04an6"]
 [ext_resource type="Texture2D" uid="uid://dqkf7nggx4syl" path="res://assets/backgrounds/box_room/box_room3.png" id="5_pp303"]
-[ext_resource type="Texture2D" uid="uid://cbtg2oj0pxgj" path="res://assets/objects/big_jellyfish_bottom/big_jellyfish_bottom0.png" id="6_oy5e2"]
-[ext_resource type="Texture2D" uid="uid://c80tkm5epr51m" path="res://assets/objects/big_jellyfish_bottom/big_jellyfish_bottom1.png" id="7_oodv0"]
+[ext_resource type="Texture2D" uid="uid://b7tiosjorftqr" path="res://assets/objects/big_jellyfish_bottom.png" id="7_eb3n5"]
 [ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://Scenes/General/hitbox.tscn" id="8_vuk6g"]
 [ext_resource type="Texture2D" uid="uid://c055oi0yraxg2" path="res://assets/backgrounds/box_room/box_room4.png" id="9_4mvhg"]
 [ext_resource type="Texture2D" uid="uid://dtyops8tvved6" path="res://assets/background_items/bg_bigbox.png" id="10_10s1p"]
@@ -25,18 +24,26 @@
 [ext_resource type="Texture2D" uid="uid://vxeeag75b113" path="res://assets/objects/bomb.png" id="23_0cudt"]
 [ext_resource type="Texture2D" uid="uid://edvy3hdoy13k" path="res://assets/objects/BOOM.png" id="24_0370c"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0370c"]
+atlas = ExtResource("7_eb3n5")
+region = Rect2(0, 0, 500, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xykdf"]
+atlas = ExtResource("7_eb3n5")
+region = Rect2(500, 0, 500, 180)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_i07pw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_oy5e2")
+"texture": SubResource("AtlasTexture_0370c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_oodv0")
+"texture": SubResource("AtlasTexture_xykdf")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twqg6"]
@@ -89,6 +96,7 @@ texture_filter = 1
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_i07pw")
 autoplay = "default"
+frame_progress = 0.03917263
 centered = false
 
 [node name="Hitbox" parent="BackgroundStuff/BigJellyfishBottom" unique_id=155716531 instance=ExtResource("8_vuk6g")]

@@ -139,8 +139,11 @@ public partial class EnterSeaBunnyRoom : Node2D
 		}
 		
 
-		var parva = GetNode<AnimatedSprite2D>("Parva");
-		parva.Hide();
+		// var parva = GetNode<AnimatedSprite2D>("Parva");
+		// parva.Hide();
+		var anim = GetNode<AnimationPlayer>("AnimationPlayer");
+		anim.Play("parva_leaves");
+		await ToSignal(anim, AnimationPlayer.SignalName.AnimationFinished);
 		await dashT.ShowText("Where did he go? Seems like I'm stuck here...");
 		player.SetDisableControl(false);
 		//Next quest: investigate the cave

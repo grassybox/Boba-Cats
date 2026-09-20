@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://qj5ya1dmxy7r" path="res://Scenes/Player+UI/underwater_player.tscn" id="6_rhgjf"]
 [ext_resource type="Texture2D" uid="uid://bekphjfbgb21g" path="res://assets/background_items/pure_vine.png" id="7_hue35"]
 [ext_resource type="Texture2D" uid="uid://b2q5ie1c6ypvu" path="res://assets/background_items/background_vine.png" id="7_rx2ad"]
-[ext_resource type="Texture2D" uid="uid://cwrrfwa67yvkk" path="res://assets/backgrounds/fish_room/fish_room4.png" id="7_stmwa"]
 [ext_resource type="Texture2D" uid="uid://c24b6mn04sgh6" path="res://assets/backgrounds/fish_room/fish_room5.png" id="8_i00v6"]
 [ext_resource type="PackedScene" uid="uid://cajcbse43dl4y" path="res://Scenes/General/interact_area.tscn" id="8_xnsu6"]
+[ext_resource type="Texture2D" uid="uid://6gexbe5jdl2g" path="res://assets/backgrounds/fish_room/fish_room_4_new.png" id="9_bjwnw"]
 [ext_resource type="PackedScene" uid="uid://bjbcf5mwtvcgo" path="res://Scenes/General/walls.tscn" id="9_fslp5"]
 [ext_resource type="PackedScene" uid="uid://b28lwwf0dhiu6" path="res://Scenes/General/text_box.tscn" id="9_gclb7"]
 [ext_resource type="Script" uid="uid://cpowamgec5cx3" path="res://CS Scripts/World 1/MinigameTime.cs" id="11_hplhg"]
@@ -188,7 +188,7 @@ scale = Vector2(1.2, 1.3)
 
 [node name="IceCreamAreaSprite" type="Sprite2D" parent="." unique_id=1068240039]
 texture_filter = 1
-texture = ExtResource("7_stmwa")
+texture = ExtResource("9_bjwnw")
 centered = false
 
 [node name="InteractArea" parent="IceCreamAreaSprite" unique_id=2057010122 instance=ExtResource("8_xnsu6")]

@@ -10,6 +10,7 @@ public partial class SeaBunnyRoom : Node2D
 	private bool cameraGliding = false;
 	private bool waitingForRespawn = false;
 	private AnimationPlayer AnimationP;
+	private AnimationPlayer gateAnim;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -18,7 +19,8 @@ public partial class SeaBunnyRoom : Node2D
 		Player =  GetNode<Player>("GroundPlayer");
 		SeaBunny = GetNode<Seabunny>("Seabunny");
 		AnimationP = GetNode<AnimationPlayer>("AnimationPlayer");
-		AnimationP.Play("gate_open");
+		gateAnim = GetNode<AnimationPlayer>("GateAnimationPlayer");
+		gateAnim.Play("gate_open");
 
 		if (GlobalScript.CQ("short") == "GetBoat")
 		{
@@ -37,7 +39,6 @@ public partial class SeaBunnyRoom : Node2D
 	public override async void _Process(double delta)
 	{
 		//MOVED: see OnPlayerRespawn()
-		//deleted stuff
 
 		if (!transitioning)
 		{
@@ -71,8 +72,8 @@ public partial class SeaBunnyRoom : Node2D
 		}
 		if (GlobalScript.CQ("short") == "Seabunny")
 		{
-			if (!SeaBunny.InFight && !Player.respawning /*&& !SeaBunny.InCutscene*/) {
-				AnimationP.Play("gate_close");
+			if (!SeaBunny.InFight && !Player.respawning && !SeaBunny.InCutscene) {
+				gateAnim.Play("gate_close");
 				GetNode<AnimatedSprite2D>("Sparkle").Show();
 				//camera.SetLimit(Side.Left, 320);
 				//reset second vine timer
@@ -103,38 +104,42 @@ public partial class SeaBunnyRoom : Node2D
 
 	private async void OnPlayerRespawn()
 	{
-		SeaBunny.Position = SeaBunny.StartPos;
-		SeaBunny.InFight = false;
+		GD.Print("Respawn stuff");//=
+		
 		var camera1 = Player.GetNode<Camera2D>("Camera2D");
 		camera1.Position = Vector2.Zero;
-		AnimationP.Play("gate_open");
-		await ToSignal(AnimationP, AnimationPlayer.SignalName.AnimationFinished);
+		GD.Print("opening gate...");//=
+		//gateAnim.Play("gate_open");
+		gateAnim.Play("RESET");
+		//await ToSignal(AnimationP, AnimationPlayer.SignalName.AnimationFinished);
 
 		//reset fight
 		//=maybe revert the save file instead? would that be better? idk
-		SeaBunny.Hp = 2;
+		GD.Print("resetting fight... ");//=
+		SeaBunny.ResetMiniboss();
 		GetNode<Node2D>("Sparkle").Position = new Vector2(400, 130);
 		var rightVine = GetNode<GrowableVine>("GrowableVine");
 		rightVine.Ungrown();
 		rightVine.Position = new Vector2(572, 0);
 		GetNode<GrowableVine>("GrowableVineLeft").Ungrown();
+		GD.Print("Again Position " + SeaBunny.Position);
 	}
 
 	public async void OnLeftVineTriggerEntered(Node2D player)
 	{
-		var sparkle = GetNode<AnimatedSprite2D>("Sparkle");
-		sparkle.Hide();
-		sparkle.Position = new Vector2(572, 130);
-		if (SeaBunny.Hp == 2)
+		if (SeaBunny.Hp == 2 && GetNode<GrowableVine>("GrowableVineLeft").isGrown)
 		{
-			if (player is Player p)
+			if (!SeaBunny.InCutscene && player is Player p)
 			{
-				p.SetDisableMovement(true);
-				p.invulnerable = true;
+				// p.SetDisableMovement(true);
+				// p.invulnerable = true;
 				await SeaBunny.EatLeftVine();
 				GetNode<Timer>("VineTimer").Start();
-				p.SetDisableMovement(false);
-				p.invulnerable = false;
+				// p.SetDisableMovement(false);
+				// p.invulnerable = false;
+				var sparkle = GetNode<AnimatedSprite2D>("Sparkle");
+				sparkle.Hide();
+				sparkle.Position = new Vector2(572, 130);
 			}
 		}
 	}

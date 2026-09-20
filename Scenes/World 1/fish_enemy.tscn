@@ -2,50 +2,64 @@
 
 [ext_resource type="Script" uid="uid://cvlpphn88vmuq" path="res://CS Scripts/World 1/FishEnemy.cs" id="1_02u7h"]
 [ext_resource type="PackedScene" uid="uid://dxgrd8fkvpx6l" path="res://Scenes/General/hitbox.tscn" id="1_5jcnu"]
-[ext_resource type="Texture2D" uid="uid://bife1sckjbq83" path="res://assets/enemy_sprites/orange_fish1.png" id="3_y5c67"]
-[ext_resource type="Texture2D" uid="uid://ca184rag7uawm" path="res://assets/enemy_sprites/orange_fish2.png" id="4_1n0dc"]
-[ext_resource type="Texture2D" uid="uid://x73r0q32j1qk" path="res://assets/enemy_sprites/pink_fish1.png" id="5_y2x11"]
-[ext_resource type="Texture2D" uid="uid://dedsd4liy61o1" path="res://assets/enemy_sprites/pink_fish2.png" id="6_feiwa"]
+[ext_resource type="Texture2D" uid="uid://bmihcagcmvo87" path="res://assets/enemy_sprites/fish_enemy.png" id="3_qooqc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0go5t"]
+atlas = ExtResource("3_qooqc")
+region = Rect2(0, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hirfm"]
+atlas = ExtResource("3_qooqc")
+region = Rect2(16, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76jtw"]
+atlas = ExtResource("3_qooqc")
+region = Rect2(32, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivt3q"]
+atlas = ExtResource("3_qooqc")
+region = Rect2(48, 0, 16, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w7egm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_y5c67")
+"texture": SubResource("AtlasTexture_0go5t")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1n0dc")
+"texture": SubResource("AtlasTexture_hirfm")
 }],
-"loop": true,
+"loop": 1,
 "name": &"orange",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_y2x11")
+"texture": SubResource("AtlasTexture_76jtw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_feiwa")
+"texture": SubResource("AtlasTexture_ivt3q")
 }],
-"loop": true,
+"loop": 1,
 "name": &"pink",
 "speed": 5.0
 }]
 
-[node name="FishEnemy" type="Node2D"]
+[node name="FishEnemy" type="Node2D" unique_id=722745632]
 position = Vector2(68, 86)
 script = ExtResource("1_02u7h")
 metadata/_edit_group_ = true
 
-[node name="Hitbox" parent="." instance=ExtResource("1_5jcnu")]
+[node name="Hitbox" parent="." unique_id=444750342 instance=ExtResource("1_5jcnu")]
 scale = Vector2(0.6, 0.3)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=701634436]
 autostart = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=764362040]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_w7egm")
-animation = &"pink"
+animation = &"orange"
+frame_progress = 0.34989128
 
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

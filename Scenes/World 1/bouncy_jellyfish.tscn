@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dewawah7lpsl6"]
 
-[ext_resource type="Texture2D" uid="uid://tyn50xkgv5cd" path="res://assets/objects/bouncy_jellyfish.png" id="1_3yii7"]
+[ext_resource type="Texture2D" path="res://assets/objects/bouncy_jellyfish.png" id="1_3yii7"]
 [ext_resource type="Texture2D" uid="uid://dks8auj0gykei" path="res://assets/objects/bounce_icon.png" id="2_ytggp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sslps"]

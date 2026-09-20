@@ -316,7 +316,7 @@ public partial class GlobalScript : Node
 		SaveGame();
 	}
 
-	//handle player pressing 'X'
+	//=handle player pressing 'X'
 	// public override void _Notification(int notif)
 	// {
 	// 	if (notif == NotificationWMCloseRequest)
